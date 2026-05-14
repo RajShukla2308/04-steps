@@ -25,11 +25,11 @@ export default function App(){
 
   function handleShowHide(){
     if(isOpen){
-      setIsOpen(false);
+      setIsOpen(s=> s = false);
       setButtonName('Show');
     }
     else{
-      setIsOpen(true);
+      setIsOpen(s=> s = true);
       setButtonName('Hide');
     }
   }
