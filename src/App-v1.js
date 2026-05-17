@@ -12,8 +12,6 @@ export default function App(){
   const [isOpen, setIsOpen]= useState(true);
   const [buttonName,setButtonName] = useState('Hide');
 
-  const btnStyle = {backgroundColor: '#7950f2', color: '#fff'};
-
   function handlePrevious(){
       if(step <= 1)return;
       setStep((step)=> step - 1);
@@ -48,38 +46,17 @@ export default function App(){
             <div className={step == 3 ? 'active':''}>3</div>
           </div>
 
-          
-
-          <StepMessage step={step}>{messages[step-1]}</StepMessage>
+          <p className="message">Step {step} : {messages[step-1]}</p>
 
           <div className="buttons">
-            <Button 
-            btnStyle={btnStyle} 
-            handleFunction = {handlePrevious}
-            
-            ><span>👈</span> Previous</Button>
-
-            {/* <button style={{backgroundColor:'#7950f2' , color:'#fff'}}
+            <button style={{backgroundColor: '#7950f2', color: '#fff'}}
+            onClick={handlePrevious}
+            >Previous</button>
+            <button style={{backgroundColor:'#7950f2' , color:'#fff'}}
             onClick={handleNext}
-            >Next</button> */}
-
-            <Button 
-            btnStyle={btnStyle}
-            handleFunction = {handleNext}
-            > Next <span>👉</span> </Button>
+            >Next</button>
           </div>
       
     </div> : <p>UI Hidden</p>}
   </div>)
-}
-
-
-function StepMessage({step, children}){
-  return <p className="message">Step {step} : {children}</p>
-}
-
-function Button({btnStyle, handleFunction, children}){
-  return <button onClick={handleFunction} style={btnStyle}>
-      {children}
-  </button>
 }
